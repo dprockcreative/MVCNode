@@ -1,0 +1,19 @@
+{
+  "name": "NODE MVC",
+  "description": "Application Server",
+  "author": "dp <dp@dprockcreative.com>",
+  "version": "0.0.1",
+  "dependencies": {
+    "connect": "1.8.5",
+    "express": "2.5.2",
+    "ejs": "0.7.1",
+    "less":"1.3.0",
+    "mysql": "0.9.5"
+  },
+  "devDependencies": {
+    "vows": "0.5.x",
+	"mocha": "*",
+	"should": "*"
+  },
+  "engine": "node >= 0.6.6"
+}

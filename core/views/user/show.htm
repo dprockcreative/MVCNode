@@ -1,0 +1,7 @@
+<ul>
+	<li><label>id</label> <span>{{= query.row.id }}</span></li>
+	<li><label>user name</label> <a href="/user/edit/{{- query.row.id }}">{{= query.row.user_name }}</a></li>
+	<li><label>screen name</label> <span>{{= query.row.screen_name }}</span></li>
+	<li><label>group</label> <small><a href="/users/{{- query.row.group.group_name }}">{{= query.row.group.group_label_short }}</a></small></li>
+	<li><label>active</label> <span>{{- query.row.active }}</span></li>
+</ul>

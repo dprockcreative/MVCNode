@@ -1,0 +1,6 @@
+{{ query.rows.forEach(function(row){ }}
+<ul>
+	<li><label>screen name</label> <a href="/user/{{= row.id }}">{{= row.screen_name }}</a></span></li>
+	<li><label>user:</label> <span>{{= row.user_name }}</span> (<small><a href="/users/{{- row.group.group_name }}">{{= row.group.group_label_short }}</a></small>) <small>{{- (row.active)?'active':'inactive' }}</small></li>
+</ul>
+{{ }); }}
