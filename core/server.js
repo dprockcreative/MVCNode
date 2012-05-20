@@ -1,34 +1,34 @@
 /**
- *	Dependencies
- 	//io 		= require('socket.io'), 
+ *    Dependencies
+     //io         = require('socket.io'), 
  */
 CONFIG = require('./config');
 //console.dir(process.env);
 
 var connect = require('connect'), 
-	express = require('express')
-	less 	= require('less'), 
-	fs      = require('fs'),
-	orm     = require('sequelize'),
-	port 	= CONFIG.port[process.env.NODE_ENV];
+    express = require('express')
+    less     = require('less'), 
+    fs      = require('fs'),
+    orm     = require('sequelize'),
+    port     = CONFIG.port[process.env.NODE_ENV];
 
 var app = express.createServer();
 
 /**
- *	Configure
+ *    Configure
  */
 app.configure('development', function(){
-	app.use(express.logger());
-	app.use(express.errorHandler({dumpExceptions:true, showStack:true}));
+    app.use(express.logger());
+    app.use(express.errorHandler({dumpExceptions:true, showStack:true}));
 });
 
 app.configure('production', function(){
-	app.use(express.logger());
-	app.use(express.errorHandler());
+    app.use(express.logger());
+    app.use(express.errorHandler());
 });
 
 /**
- *	Configure
+ *    Configure
  */
 app.set('view engine', 'htm');
 app.register('.htm', require('ejs'));
@@ -43,7 +43,7 @@ app.use(app.router);
 
 
 /**
- *	Errors
+ *    Errors
  */
 app.error(function(err, req, res, next){
     if (err instanceof NotFound) {
@@ -57,37 +57,37 @@ app.listen(port);
 console.log('Listening on ' + port);
 
 /**
- *	Database
+ *    Database
  */
 var db = CONFIG.db[process.env.NODE_ENV];
 ORM = new orm(db.database, db.user, db.pw, {host:db.host,port:db.port,logging:db.logging});
 
 /**
- *	Models
+ *    Models
  */
 require('./models/index');
 
 /**
- *	Routes
+ *    Routes
  */
 require('./routes')(app);
 
 /**
- *	A Route for Creating a 500 Error (Useful to keep around)
+ *    A Route for Creating a 500 Error (Useful to keep around)
  */
 app.get('/500', function(req, res){
-	throw new Error('This is a 500 Error');
+    throw new Error('This is a 500 Error');
 });
 
 /**
- *	The 404 Route [KEEP AS LAST ROUTE]
+ *    The 404 Route [KEEP AS LAST ROUTE]
  */
 app.get('/*', function(req, res){
-	throw new NotFound;
+    throw new NotFound;
 });
-	
+    
 /**
- *	Housecleaning
+ *    Housecleaning
  */
 function NotFound(msg){
     this.name = 'NotFound';
