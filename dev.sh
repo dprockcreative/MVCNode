@@ -1,3 +1,3 @@
-sudo /usr/sbin/apachectl restart
-sleep 5
-sudo NODE_ENV=development node core/server.js
+#!/bin/bash
+sudo killall -2 node
+sudo NODE_ENV=development node web/server.js &
